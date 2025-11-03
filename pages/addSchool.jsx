@@ -27,7 +27,7 @@ export default function AddSchool() {
     reader.readAsDataURL(f);
   };
 
-  const uploadToLocal = async (file) => {
+  const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("image", file);
 
@@ -36,8 +36,13 @@ export default function AddSchool() {
       body: formData,
     });
 
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Upload failed: ${text}`);
+    }
+
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Upload failed");
+    if (!data.url) throw new Error("No image URL returned");
     return data.url;
   };
 
@@ -48,7 +53,7 @@ export default function AddSchool() {
     try {
       let imageUrl = null;
       if (file) {
-        imageUrl = await uploadToLocal(file);
+        imageUrl = await uploadToCloudinary(file);
       }
 
       const newSchool = { ...school, image_url: imageUrl, id: Date.now() };
@@ -58,8 +63,8 @@ export default function AddSchool() {
       alert("School added successfully!");
       router.push("/showSchools");
     } catch (err) {
-      console.error(err);
-      alert("Failed to add school: " + (err.message || ""));
+      console.error("Error adding school:", err);
+      alert("Failed to add school: " + (err.message || "Unknown error"));
     } finally {
       setLoading(false);
     }
@@ -74,6 +79,7 @@ export default function AddSchool() {
         encType="multipart/form-data"
         className="school-form"
       >
+     
         <div className="form-row">
           <div className="form-group">
             <label>Name</label>
@@ -95,6 +101,7 @@ export default function AddSchool() {
           </div>
         </div>
 
+        
         <div className="form-row">
           <div className="form-group">
             <label>State</label>
@@ -116,6 +123,7 @@ export default function AddSchool() {
           </div>
         </div>
 
+      
         <div className="form-group">
           <label>Address</label>
           <input
