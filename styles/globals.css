@@ -1,0 +1,687 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  --bg: #fafafa;
+  --card-bg: #ffffff;
+  --text: #1e1e1e;
+  --muted: #555;
+  --accent: #6b5cff;
+  --input-bg: #fbfbfb;
+  --input-border: #ddd;
+  --shadow-1: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --bg: #0e0e11;
+  --card-bg: #16161a;
+  --text: #e8e8e8;
+  --muted: #bfbfbf;
+  --accent: #9a8cff;
+  --input-bg: #111114;
+  --input-border: #2a2a2a;
+  --shadow-1: 0 6px 24px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f3e8ff, #e8f4ff);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow-1);
+  transition: background 0.4s ease;
+}
+
+.dark .navbar {
+  background: linear-gradient(135deg, #1d1d22, #151518);
+}
+
+.navbar .brand a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.toggle-btn {
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.home-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-container p {
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-btn {
+  background: linear-gradient(135deg, #c8e7ff, #e5d4ff);
+  color: var(--text);
+  padding: 0.9rem 1.8rem;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.home-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #b5dcff, #d9c2ff);
+  text-decoration: none;
+}
+
+.form-container {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--shadow-1);
+  max-width: 950px;
+  width: 100%;
+  padding: 3.5rem 3rem;
+  margin: 3rem auto;
+  transition: all 0.3s ease;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 2.8rem;
+  font-size: 2rem;
+  color: var(--text);
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.school-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 16px;
+  border: 1.5px solid var(--input-border);
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.25s ease;
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+.form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(162, 139, 255, 0.2);
+}
+
+.image-preview {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image-preview img {
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.03);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #cfc3ff, #a6d7ff);
+  border: none;
+  border-radius: 18px;
+  padding: 1.1rem 1.3rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text);
+  margin-top: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: fit-content;
+  align-self: center;
+  min-width: 200px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #bfb3ff, #93cfff);
+}
+
+.school-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.school-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-1);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.school-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.school-card img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.school-card h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.school-card p {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+
+.home-link {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-link:hover {
+  color: #5548ff;
+}
+
+
+@media (max-width: 700px) {
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dashboard-container h2 {
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.dashboard-container p {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+.chart-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;   
+  height: 300px;      
+  margin: 0 auto 2rem;
+}
+
+@media (max-width: 600px) {
+  .chart-box {
+    max-width: 280px;
+    height: 240px;
+  }
+}
+
+/* ---------- All Schools Page ---------- */
+.show-schools-page {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text);
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-1);
+  max-width: 600px;
+  margin: 4rem auto;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.empty-state h3 {
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.empty-state p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+/* ---------- Grid ---------- */
+.school-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin: 3rem auto;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+/* ---------- Card ---------- */
+.school-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.school-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Image ---------- */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.school-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: var(--input-bg);
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ---------- Hover Overlay ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 231, 255, 0.5),
+    rgba(229, 212, 255, 0.5)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.image-wrapper:hover .school-image {
+  transform: scale(1.05);
+}
+
+/* ---------- Info Section ---------- */
+.school-info {
+  padding: 1.5rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.school-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.school-address,
+.school-location,
+.school-contact {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Back Button ---------- */
+.back-btn {
+  text-decoration: none;
+  background: linear-gradient(135deg, #c8e7ff, #e5d4ff);
+  color: var(--text);
+  padding: 0.9rem 1.8rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #b5dcff, #d9c2ff);
+}
+
+.bottom-back-btn {
+  margin-top: 3rem;
+  display: inline-block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .school-grid {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .image-wrapper {
+    height: 180px;
+  }
+
+  .school-info h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------- Action Buttons ---------- */
+.action-buttons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #d7f9f7, #b2e3ff);
+  color: var(--text);
+}
+
+.edit-btn:hover {
+  background: linear-gradient(135deg, #bfeaf0, #a8d8ff);
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ffd6e0, #ffb8c7);
+  color: #4a1b1b;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #ffb0bf, #ff99b3);
+  transform: translateY(-2px);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow-y: auto; /* 👈 allows scrolling when modal is taller than screen */
+  padding: 2rem; /* ensures spacing on small screens */
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(200, 200, 255, 0.4);
+  animation: fadeIn 0.3s ease;
+  position: relative;
+  margin: auto; /* centers modal even with scroll */
+}
+
+.modal h3 {
+  font-size: 1.6rem;
+  color: var(--text);
+  margin-bottom: 1.8rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 75vh; /* 👈 prevents it from overflowing */
+  overflow-y: auto; /* 👈 adds scroll inside modal */
+  padding-right: 0.5rem;
+}
+
+.edit-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.edit-form::-webkit-scrollbar-thumb {
+  background: rgba(160, 160, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Form inputs */
+.modal input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(162, 139, 255, 0.25);
+}
+
+/* ---------- Modal Actions ---------- */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.8rem;
+  gap: 1rem;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #cfc3ff, #a6d7ff);
+  color: var(--text);
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #bfb3ff, #93cfff);
+}
+
+.cancel-btn {
+  background: #d3d3d3;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #bcbcbc;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

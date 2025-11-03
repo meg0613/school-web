@@ -1,0 +1,1 @@
+Updated project ready for MySQL + Cloudinary. See assistant's instructions.
